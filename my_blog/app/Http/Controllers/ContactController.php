@@ -20,4 +20,10 @@ class ContactController extends Controller
 
         return redirect()->route('contact')->with('success', 'Add to date base!!!');
     }
+
+    public function allDate()
+    {
+        $contact = new Contact;
+        return view('messages', ['data' => $contact->orderBy('id', 'desc')->take(5)->get()]);
+    }
 }
